@@ -1,0 +1,27 @@
+{
+  "name": "sqlize_orm_in_nodejs",
+  "version": "1.0.0",
+  "description": "sqlize_ORM_in_nodeJS",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanviredu/sqlize_ORM_in_nodeJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanviredu/sqlize_ORM_in_nodeJS/issues"
+  },
+  "homepage": "https://github.com/tanviredu/sqlize_ORM_in_nodeJS#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "nunjucks": "^3.2.2",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0",
+    "sqlite3": "^5.0.0"
+  }
+}
