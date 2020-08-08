@@ -9,8 +9,18 @@ const User = connection.define("User",{
         primaryKey   : true,
         defaultValue : Sequelize.UUIDV4
     },
-    name : Sequelize.STRING,
-    bio  : Sequelize.TEXT
+    // and we are adding some validators
+    name :{
+        type         : Sequelize.STRING,
+        validators   :{
+            len : [10],// 5 is the max value
+            
+        }
+    }, 
+    bio  :{ 
+        type         : Sequelize.TEXT,
+        // see the doc for the validators
+    }
 })
 
 module.exports = User;

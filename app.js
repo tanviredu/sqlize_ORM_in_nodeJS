@@ -21,23 +21,42 @@ nunjucks.configure('views',{
 app.get("/",(req,res)=>{
     res.render("index.html");
 })
-app.post("/", async (req,res)=>{
-    name = req.body.name;
-    bio  = req.body.bio;
-    try{
-        await User.create({
-            name:name,
-            bio: bio
-        })
-        console.log("done");
-        res.redirect("/")
-    }catch(err){
-        console.log(err);
-        res.redirect("/")
 
-    }
+
+app.post("/",(req,res)=>{
+    User.create({
+        name : req.body.name,
+        bio  : req.body.bio
+    })
+    .then((user)=>{
+        res.json(user)
+    }).catch((err)=>{
+        console.log(err);
+        res.status(404).send(err);
+    })
+});
+
+
+
+
+// this is the best
+// app.post("/", async (req,res)=>{
+//     name = req.body.name;
+//     bio  = req.body.bio;
+//     try{
+//         await User.create({
+//             name:name,
+//             bio: bio
+//         })
+//         console.log("done");
+//         res.redirect("/")
+//     }catch(err){
+//         console.log(err);
+//         res.status(404).send(err)
+
+//     }
     
-})
+// })
 
 
 
