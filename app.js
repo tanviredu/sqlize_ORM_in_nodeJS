@@ -2,7 +2,8 @@ const express   = require("express");
 const Sequelize = require("sequelize");
 const nunjucks  = require("nunjucks");
 const db        = require("./models/db");
-const User    = require("./models/models");
+const User      = require("./models/models");
+const Auth      = require("./models/auth");
 const app       = express();
 const PORT      = 8000;
 
@@ -38,25 +39,39 @@ app.post("/",(req,res)=>{
 
 
 
-
 // this is the best
-// app.post("/", async (req,res)=>{
-//     name = req.body.name;
-//     bio  = req.body.bio;
-//     try{
-//         await User.create({
-//             name:name,
-//             bio: bio
-//         })
-//         console.log("done");
-//         res.redirect("/")
-//     }catch(err){
-//         console.log(err);
-//         res.status(404).send(err)
 
-//     }
+
+
+app.get("/login",(req,res)=>{
+    res.render("login.html");
+});
+
+app.post("/login", async (req,res)=>{
+    name      = req.body.username;
+    password  = req.body.password;
+    try{
+        var auth = await Auth.create({
+            name:name,
+            password: password
+        })
+        console.log("done");
+        res.json(auth);
+        // you will see that the password is encrypted
+        // res.redirect("/login")
+    }catch(err){
+        console.log(err);
+        res.status(404).send(err)
+
+    }
     
-// })
+})
+
+
+
+
+
+
 
 
 
